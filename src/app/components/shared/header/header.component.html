@@ -1,0 +1,29 @@
+
+<!-- Desktop nav -->
+<div class="flex justify-between w-full h-16 bg-gray-800 font-bold items-center p-5 text-xl text-white">
+
+    <!-- Nav -->
+    <div class="flex-row nav">
+        <button
+            class="w-24 border-b-4 border-transparent hover:bg-gray-700 m-2 p-1 rounded-sm"
+            *ngFor="let route of access(routes)"
+            routerLinkActive="text-orange-500 border-orange-500"
+            [routerLink]="route.path"
+            >
+            <i class="fas" [ngClass]="route.icon"></i>
+        </button>
+    </div>
+
+    <!-- User -->
+    <div class="flex">
+        <button class="
+            w-32 p-2
+            font-bold text-lg text-orange-900
+            bg-orange-500 rounded-sm
+            border-orange-800
+            shadow-md hover:border-2
+            "
+            [routerLink]="['/login']"
+            > Login </button>
+    </div>
+</div>
