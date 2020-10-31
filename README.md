@@ -1,5 +1,5 @@
 # FleksReinoterUi
-This is an assignment response in the application process for Senior Fullstack Developer at Fleks
+Frontend UI for fleks assignment response during application process for a Senior Fullstack Developer position.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.6.
 
