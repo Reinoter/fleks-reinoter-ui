@@ -8,5 +8,8 @@ module.exports = (isProd) => ({
       enabled: isProd,
       content: ['**/*.html', '**/*.ts']
     },
+    variants: {
+        borderWidth: ['responsive', 'hover', 'focus', 'active']
+    },
     theme: {}
 });

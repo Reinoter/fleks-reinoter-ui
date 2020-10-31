@@ -1,0 +1,10 @@
+
+.nav{
+    button:focus{
+        outline: 0;
+    }
+
+    button.active{
+        box-sizing: border-box;
+    }
+}
