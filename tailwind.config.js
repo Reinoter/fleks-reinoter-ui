@@ -11,5 +11,12 @@ module.exports = (isProd) => ({
     variants: {
         borderWidth: ['responsive', 'hover', 'focus', 'active']
     },
-    theme: {}
+    theme: {
+        ripple: theme => ({
+            colors: theme('colors')
+        }),
+    },
+    plugins: [
+        require('tailwindcss-ripple')()
+      ],
 });
