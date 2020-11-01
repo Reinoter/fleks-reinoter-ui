@@ -40,8 +40,13 @@ export class LoginComponent implements OnInit {
       this.loginFormError = undefined;
       if(this.loginForm.status == "INVALID") return this.loginFormError = "Please fill out the form";
 
+      /*
+      Http needs to take JSON
+      {username: string, password:string}
+      this is required by the Passport Package.
+      */
       this.http.post(`/api/user/login`, {
-          email: this.loginForm.value["email"],
+          username: this.loginForm.value["email"],
           password: this.loginForm.value["password"]
       })
         .subscribe((data) => {
