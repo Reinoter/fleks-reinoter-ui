@@ -8,6 +8,7 @@
 *{
     font-family: "roboto";
     color: white;
+    box-sizing: border-box;
 }
 
 button{}
@@ -31,4 +32,24 @@ input:focus{
 label{
     margin-bottom: .2rem;
     font-weight: 700;
+}
+
+
+.form-item{
+    border: 2px solid transparent;
+}
+
+.ng-invalid{
+    border: 2px solid red;
+}
+
+
+.hide-err.ng-invalid{
+    border-color: transparent !important
+}
+
+.hide-err{
+    .ng-invalid{
+        border-color: transparent !important
+    }
 }

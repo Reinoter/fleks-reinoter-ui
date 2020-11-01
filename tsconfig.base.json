@@ -5,7 +5,9 @@
     "baseUrl": "./",
     "paths": {
         "@shared": ["src/app/components/shared"],
-        "@sites": ["src/app/components/sites"]
+        "@sites": ["src/app/components/sites"],
+        "@services": ["src/app/services"],
+        "@environment": ["src/environments/environment"]
     },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
