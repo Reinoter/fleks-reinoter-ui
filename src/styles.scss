@@ -7,9 +7,49 @@
 
 *{
     font-family: "roboto";
+    color: white;
+    box-sizing: border-box;
 }
 
 button{}
 button:focus{
     outline: 0;
+}
+
+body{
+    background: whitesmoke;
+}
+
+input{
+    background: rgba(0,0,0, .2);
+    outline: 0;
+}
+
+input:focus{
+    background: rgba(0,0,0, .4);
+}
+
+label{
+    margin-bottom: .2rem;
+    font-weight: 700;
+}
+
+
+.form-item{
+    border: 2px solid transparent;
+}
+
+.ng-invalid{
+    border: 2px solid red;
+}
+
+
+.hide-err.ng-invalid{
+    border-color: transparent !important
+}
+
+.hide-err{
+    .ng-invalid{
+        border-color: transparent !important
+    }
 }
