@@ -7,10 +7,13 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ButtonComponent implements OnInit {
   @Input() value:string;
+  @Input() icon:string;
 
   constructor() { }
 
   ngOnInit(): void {
+      console.log("init button ", this.icon);
+
   }
 
 }
