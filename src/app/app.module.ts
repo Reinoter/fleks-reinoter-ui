@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material';
+import { NgxMatDatetimePickerModule, NgxMatTimepickerModule, NgxMatNativeDateModule } from '@angular-material-components/datetime-picker';
 
 import { AppComponent } from './app.component';
 import {
@@ -44,7 +45,10 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
-        MaterialModule
+        MaterialModule,
+        NgxMatNativeDateModule,
+        NgxMatDatetimePickerModule,
+        NgxMatTimepickerModule,
     ],
     entryComponents: [AddCarComponent],
     providers: [

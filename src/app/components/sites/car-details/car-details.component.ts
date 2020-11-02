@@ -10,7 +10,8 @@ import { HttpClient } from '@angular/common/http';
 export class CarDetailsComponent implements OnInit {
   car:any;
   sub:any;
-  
+  minDate:Date;
+
   constructor(
       private route: ActivatedRoute,
       private router:Router,
@@ -19,7 +20,10 @@ export class CarDetailsComponent implements OnInit {
       this.sub = route.params.subscribe(p => this.initCar(p['id']))
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+      this.minDate = new Date();
+  }
+  
   ngOnDestroy(){
       this.sub.unsubscribe();
   }
