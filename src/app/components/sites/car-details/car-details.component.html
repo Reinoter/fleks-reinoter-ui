@@ -13,13 +13,15 @@
     <div class="flex bg-contain bg-no-repeat w-4/6 h-64 bg-center" [style.backgroundImage]="'url('+car?.image+')'"></div>
 </div>
 <div class="flex flex-col mt-10">
-    <h1 class="text-bold text-2xl font-bold truncate">Get yours now!</h1>
-    <div class="flex">
+    <h1 class="text-bold text-2xl font-bold truncate pb-5">Get yours now!</h1>
+    <div class="flex form" [ngClass]="!error?'hide-err':''" [formGroup]="subscriptionForm">
         <div class="flex flex-col w-full">
-                <label>Delivery date</label>
+                <label class="pl-3">Delivery date</label>
                 <div class="flex w-full rounded overflow-hidden">
-                    <input [ngxMatDatetimePicker]="picker" placeholder="Choose a date"
-                    [min]="minDate" class="h-10 p-3 w-full">
+                    <input
+                    formControlName="deliveryDate"
+                    [ngxMatDatetimePicker]="picker" placeholder="Choose a date"
+                    [min]="minDate" class="h-10 p-3 w-full form-item">
                     <mat-datepicker-toggle class="bg-gray-500 h-10" [for]="picker"></mat-datepicker-toggle>
                     <ngx-mat-datetime-picker #picker [showSpinners]="true" [showSeconds]="false"
                     [stepHour]="1" [stepMinute]="1"
@@ -28,12 +30,13 @@
             </div>
         </div>
         <div class="flex flex-col ml-5 w-full">
-            <label>Address</label>
+            <label class="pl-3">Address</label>
             <div class="flex rounded w-full overflow-hidden">
                 <input
                     placeholder="Location"
+                    formControlName="address"
                     type="text"
-                    class="form-item h-10 p-3 w-full"
+                    class="form-item h-10 p-3 w-full form-item"
                 />
                 <div class="flex w-10 h-10 bg-gray-500 items-center justify-center">
                     <i class="fas fa-map-marked-alt" style="color: #495058"></i>
@@ -42,7 +45,8 @@
         </div>
         <div class="flex flex-col ml-5 w-2/6">
             <label class="opacity-0">#</label>
-            <app-button value="Rent" icon="fa-key"></app-button>
+            <app-button value="Rent" icon="fa-key" (click)="subscribe()"></app-button>
         </div>
     </div>
+    <p class="text-red-600 font-bold mt-2 pl-3">{{error}}</p>
 </div>
