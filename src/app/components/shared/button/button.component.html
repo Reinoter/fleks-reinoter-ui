@@ -1,4 +1,4 @@
-<button class="flex items-center w-full bg-orange-500 hover:bg-orange-600 focus:bg-orange-600 text-gray-800 font-bold h-10 px-4 rounded shadow ripple-bg-orange-600" [ngClass]="icon?'justify-between':'justify-center'">
-  <div>{{value}}</div>
+<button class="flex items-center w-full bg-orange-500 hover:bg-orange-600 focus:bg-orange-600 text-gray-800 font-bold h-10 rounded shadow ripple-bg-orange-600" [ngClass]="{'px-4': value, 'justify-between':(icon && value), 'justify-center':(!icon || !value) }">
+  <div *ngIf="value">{{value}}</div>
   <i class="fas" [ngClass]="icon" *ngIf="icon"></i>
 </button>

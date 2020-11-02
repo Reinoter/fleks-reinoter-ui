@@ -1,5 +1,5 @@
-<div class="flex items-center">
-    <div class="flex flex-col w-2/6">
+<div class="flex flex-col md:flex-row items-center">
+    <div class="flex flex-col w-full md:w-2/6">
         <h1 class="text-bold text-2xl font-bold truncate">{{car?.name}}</h1>
         <label>Price</label>
         <p>kr {{car?.price}}/mnd</p>
@@ -16,7 +16,7 @@
 </div>
 <div class="flex flex-col mt-10">
     <h1 class="text-bold text-2xl font-bold truncate pb-5">Get yours now!</h1>
-    <div class="flex form" [ngClass]="!error?'hide-err':''" [formGroup]="subscriptionForm">
+    <div class="flex flex-col form md:flex-row" [ngClass]="!error?'hide-err':''" [formGroup]="subscriptionForm">
         <div class="flex flex-col w-full">
                 <label class="pl-3">Delivery date</label>
                 <div class="flex w-full rounded overflow-hidden">
@@ -31,7 +31,7 @@
                 </ngx-mat-datetime-picker>
             </div>
         </div>
-        <div class="flex flex-col ml-5 w-full">
+        <div class="flex flex-col md:ml-5 md:mt-0 mt-5 w-full">
             <label class="pl-3">Address</label>
             <div class="flex rounded w-full overflow-hidden">
                 <input
@@ -45,7 +45,7 @@
                 </div>
             </div>
         </div>
-        <div class="flex flex-col ml-5 w-2/6">
+        <div class="flex flex-col w-full md:ml-5 md:w-2/6">
             <label class="opacity-0">#</label>
             <app-button value="Rent" icon="fa-key" (click)="subscribe()"></app-button>
         </div>
