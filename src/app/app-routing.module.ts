@@ -8,10 +8,10 @@ import {
  } from '@sites';
 
 const routes: Routes = [
-    { path: '', component: HomeComponent },
-    { path: 'login', component: LoginComponent },
-    { path: 'cars', component: CarTypesComponent },
-    { path: 'cars/:id', component: CarDetailsComponent },
+    { path: '', component: HomeComponent, data: {animation: '1'} },
+    { path: 'login', component: LoginComponent, data: {animation: '2'} },
+    { path: 'cars', component: CarTypesComponent, data: {animation: '3'} },
+    { path: 'cars/:id', component: CarDetailsComponent, data: {animation: '4'} },
 ];
 
 @NgModule({
