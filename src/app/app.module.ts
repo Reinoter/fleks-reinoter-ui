@@ -17,11 +17,13 @@ import {
     LoginComponent,
     CarTypesComponent,
     AddCarComponent,
-    HomeComponent
+    HomeComponent,
+    CarDetailsComponent
 } from '@sites';
 
 import { BackendService } from '@services';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+
 
 
 @NgModule({
@@ -32,7 +34,8 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
         CarTypesComponent,
         ButtonComponent,
         AddCarComponent,
-        HomeComponent
+        HomeComponent,
+        CarDetailsComponent
     ],
     imports: [
         BrowserModule,
