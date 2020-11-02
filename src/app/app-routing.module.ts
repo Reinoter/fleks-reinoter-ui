@@ -4,7 +4,9 @@ import {
     LoginComponent,
     CarTypesComponent,
     HomeComponent,
-    CarDetailsComponent
+    CarDetailsComponent,
+    SubscriptionsComponent,
+    SubscriptionsDetailsComponent
  } from '@sites';
 
 const routes: Routes = [
@@ -12,6 +14,8 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent, data: {animation: '2'} },
     { path: 'cars', component: CarTypesComponent, data: {animation: '3'} },
     { path: 'cars/:id', component: CarDetailsComponent, data: {animation: '4'} },
+    { path: 'subscriptions', component: SubscriptionsComponent, data: {animation: '5'} },
+    { path: 'subscriptions/:id', component: SubscriptionsDetailsComponent, data: {animation: '6'} },
 ];
 
 @NgModule({

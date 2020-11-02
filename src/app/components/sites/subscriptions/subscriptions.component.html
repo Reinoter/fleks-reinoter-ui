@@ -1,0 +1,26 @@
+<div [routerLink]="['/subscriptions', sub._id]" class="flex mb-5 justify-between cursor-pointer hover:bg-orange-500 p-3 car flex h-20 shadow-xl w-full rounded bg-gray-300" *ngFor="let sub of subscriptions">
+    <div class="flex flex-col w-4/6 bg-contain bg-no-repeat" [style.backgroundImage]="'url('+sub.car?.image+')'">
+    </div>
+    <div class="flex flex-col w-full xl:items-start items-end">
+        <label>Car</label>
+        <h1>{{sub.car.name}}</h1>
+    </div>
+    <div class="flex flex-col w-1/2 hidden xl:flex">
+        <label>Order date</label>
+        <h1>{{formatDate(sub.created_at)}}</h1>
+    </div>
+    <div class="flex flex-col w-full hidden xl:flex">
+        <label>Delivery date</label>
+        <h1>{{formatDate(sub.deliveryDate, true)}}</h1>
+    </div>
+    <div class="flex flex-col w-full hidden xl:flex">
+        <label>Address</label>
+        <h1>{{sub.address}}</h1>
+    </div>
+</div>
+
+<app-button
+class="flex mt-5"
+value="Create new subscription"
+[routerLink]="['/']"
+></app-button>

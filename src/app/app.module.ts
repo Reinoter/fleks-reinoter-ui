@@ -24,6 +24,8 @@ import {
 
 import { BackendService } from '@services';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { SubscriptionsComponent } from './components/sites/subscriptions/subscriptions.component';
+import { SubscriptionsDetailsComponent } from './components/sites/subscriptions-details/subscriptions-details.component';
 
 
 
@@ -36,7 +38,9 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
         ButtonComponent,
         AddCarComponent,
         HomeComponent,
-        CarDetailsComponent
+        CarDetailsComponent,
+        SubscriptionsComponent,
+        SubscriptionsDetailsComponent
     ],
     imports: [
         BrowserModule,
