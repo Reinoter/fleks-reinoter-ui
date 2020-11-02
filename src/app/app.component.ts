@@ -19,17 +19,6 @@ export class AppComponent {
         private backendService: BackendService
     ){
         this.routed_count = 0;
-        if(!this.cookieService.check('fleksAuth')) return
-        if(this.cookieService.get('fleksAuth') == "null") return;
-
-        this.backendService.authToken = this.cookieService.get('fleksAuth');
-        console.log("reauth ", this.backendService.authToken);
-        this.http.post(`/api/user/login`, {})
-            .subscribe((data) => {
-                this.backendService.updateUser(data);
-            }, (e) => {
-                console.error(this.backendService.formatHttpError(e));
-            })
     }
 
     prepareRoute(outlet: RouterOutlet) {

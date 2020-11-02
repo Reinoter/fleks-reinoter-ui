@@ -23,7 +23,7 @@ export class BackendService {
             "fleksAuth",
             data.authToken,
             date,
-            null,
+            "/",
             null,
             false,
             'Lax'

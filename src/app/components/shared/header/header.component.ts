@@ -44,11 +44,17 @@ export class HeaderComponent implements OnInit {
   logout(){
       this.http.get(`/api/user/logout`)
         .subscribe(() => {
-            console.log("Deleting");
-
             this.cookieService.delete('fleksAuth');
             this.backendService.authToken = undefined;
-            this.cookieService.set('fleksAuth', null);
+            this.cookieService.set(
+                "fleksAuth",
+                null,
+                null,
+                "/",
+                null,
+                false,
+                'Lax'
+            );
             this.router.navigate(["/"])
         })
   }

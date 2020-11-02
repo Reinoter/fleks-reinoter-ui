@@ -16,8 +16,6 @@ export class SubscriptionsComponent implements OnInit {
   ngOnInit(): void {
       this.http.get(`/api/subscription`)
         .subscribe((docs) => {
-            console.log("got subscription ", docs);
-
             this.subscriptions = docs;
         })
   }

@@ -27,7 +27,6 @@ sub:any;
   initSubscription(id){
       this.http.get(`/api/subscription/id/${id}`)
         .subscribe((doc) => {
-            console.log("Got sub", doc);
             this.subscription = doc;
         })
   }

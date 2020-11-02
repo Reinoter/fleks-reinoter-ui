@@ -41,7 +41,6 @@ export class CarDetailsComponent implements OnInit {
   initCar(id){
       this.http.get(`/api/car-type/id/${id}`)
         .subscribe((doc) => {
-            console.log("Got car", doc);
             this.car = doc;
         })
   }

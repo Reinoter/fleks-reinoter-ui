@@ -36,7 +36,8 @@ export class LoginComponent implements OnInit {
       if(this.backendService.authToken) this.router.navigate(['/']);
   }
 
-  login(){
+  login(event = undefined){
+      if(event && event.keyCode != 13) return;
       this.loginFormError = undefined;
       if(this.loginForm.status == "INVALID") return this.loginFormError = "Please fill out the form";
 
@@ -55,7 +56,8 @@ export class LoginComponent implements OnInit {
         }, e => this.loginFormError = this.backendService.formatHttpError(e))
   }
 
-  register(){
+  register(event = undefined){
+      if(event && event.keyCode != 13) return;
       this.regFormError = undefined;
       if(this.regForm.status == "INVALID") return this.regFormError = "Please fill out the form";
       if(this.regForm.value["password"] != this.regForm.value["passwordRepeat"]){
