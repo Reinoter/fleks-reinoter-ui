@@ -20,7 +20,10 @@ export class AppComponent {
     ){
         this.routed_count = 0;
         if(!this.cookieService.check('fleksAuth')) return
+        if(this.cookieService.get('fleksAuth') == "null") return;
+
         this.backendService.authToken = this.cookieService.get('fleksAuth');
+        console.log("reauth ", this.backendService.authToken);
         this.http.post(`/api/user/login`, {})
             .subscribe((data) => {
                 this.backendService.updateUser(data);
@@ -30,8 +33,6 @@ export class AppComponent {
     }
 
     prepareRoute(outlet: RouterOutlet) {
-        console.log("LOL? ", outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation);
-
       return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
     }
 }
