@@ -1,42 +1,37 @@
 
 <!-- Desktop nav -->
-<div class="flex justify-between w-full h-16 bg-gray-800 font-bold items-center p-5 text-xl text-white">
+<div class="flex w-full h-16 bg-gray-800 font-bold text-xl text-white">
+    <div class="flex w-full pl-5 pr-5 md:w-5/6 lg:w-4/6 mx-auto justify-between items-center h-full">
+        <!-- Nav -->
+        <div class="flex-row nav">
+            <button
+                class="w-24 border-b-4 border-transparent hover:bg-gray-700 m-2 p-1 rounded-sm"
+                *ngFor="let route of access(routes)"
+                routerLinkActive="text-orange-500 border-orange-500"
+                [routerLinkActiveOptions]="(route.path == '/')?{exact: true}:{exact:false}"
+                [routerLink]="route.path"
+                >
+                <i class="fas" [ngClass]="route.icon"></i>
+            </button>
+        </div>
 
-    <!-- Nav -->
-    <div class="flex-row nav">
-        <button
-            class="w-24 border-b-4 border-transparent hover:bg-gray-700 m-2 p-1 rounded-sm"
-            *ngFor="let route of access(routes)"
-            routerLinkActive="text-orange-500 border-orange-500"
-            [routerLink]="route.path"
-            >
-            <i class="fas" [ngClass]="route.icon"></i>
-        </button>
-    </div>
-
-    <!-- User -->
-    <div class="flex">
-        <button
-            *ngIf="backendService.authToken"
-            class="
-            w-32 h-10
-            font-bold text-lg text-gray-900
-            border-2 bg-orange-500 rounded-sm
-            border-orange-500
-            shadow-md hover:border-orange-800
-            "
-            (click)="logout()"
-            > Logout </button>
-        <button
-            *ngIf="!backendService.authToken"
-            class="
-            w-32 h-10
-            font-bold text-lg text-gray-900
-            border-2 bg-orange-500 rounded-sm
-            border-orange-500
-            shadow-md hover:border-orange-800
-            "
-            [routerLink]="['/login']"
-            > Login </button>
+        <!-- User -->
+        <div class="flex w-1/6 text-md">
+            <!-- <app-button value="Rent" icon="fa-key"></app-button> -->
+            <app-button
+                *ngIf="backendService.authToken"
+                value="Logout"
+                icon="fa-sign-out-alt"
+                (click)="logout()"
+                class="w-full"
+                ></app-button>
+            <app-button
+                *ngIf="!backendService.authToken"
+                value="Login"
+                class="w-full"
+                icon="fa-sign-in-alt"
+                [routerLink]="['/login']"
+                ></app-button>
+        </div>
     </div>
 </div>
