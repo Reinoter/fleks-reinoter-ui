@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BackendService } from '@services';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +17,8 @@ export class HeaderComponent implements OnInit {
   constructor(
       public backendService: BackendService,
       private cookieService: CookieService,
-      private router: Router
+      private router: Router,
+      private http: HttpClient
   ) {
       this.routes = [{
           path: "/",
@@ -40,9 +42,15 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(){
-      this.cookieService.delete('fleksAuth');
-      this.backendService.authToken = undefined;
-      this.router.navigate(["/"])
+      this.http.get(`/api/user/logout`)
+        .subscribe(() => {
+            console.log("Deleting");
+
+            this.cookieService.delete('fleksAuth');
+            this.backendService.authToken = undefined;
+            this.cookieService.set('fleksAuth', null);
+            this.router.navigate(["/"])
+        })
   }
 
 }

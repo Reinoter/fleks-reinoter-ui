@@ -1,5 +1,5 @@
-<div class="flex p-12 items-start">
-    <div class="form-item flex flex-col bg-gray-800 w-full shadow-2xl mr-12 p-5 rounded-md" [ngClass]="!loginFormError?'hide-err':''" [formGroup]="loginForm">
+<div class="flex items-start">
+    <div class="form-item flex flex-col bg-gray-300 w-full shadow-2xl mr-12 p-5 rounded-md" [ngClass]="!loginFormError?'hide-err':''" [formGroup]="loginForm">
         <label class="pl-2">Email</label>
         <input
             formControlName="email"
@@ -11,20 +11,15 @@
             type="password" class="form-item p-2 h-10 mb-5"/>
 
         <div class="flex w-full justify-between items-center">
-            <button class="
-                w-32 h-10
-                font-bold text-base text-gray-900
-                border-2 bg-orange-500 rounded-sm
-                border-orange-500
-                shadow-md hover:border-orange-800
-                "
+            <app-button
                 (click)="login()"
-                > Login </button>
+                value="Login"
+                ></app-button >
                 <p class="text-red-600">{{loginFormError}}</p>
         </div>
     </div>
 
-    <div class="form-item flex flex-col bg-gray-800 w-full shadow-2xl p-5 rounded-md" [ngClass]="!regFormError?'hide-err':''" [formGroup]="regForm">
+    <div class="form-item flex flex-col bg-gray-300 w-full shadow-2xl p-5 rounded-md" [ngClass]="!regFormError?'hide-err':''" [formGroup]="regForm">
         <label class="pl-2">Email</label>
         <input
             formControlName="email"
@@ -43,15 +38,10 @@
             class="p-2 h-10 mb-5"/>
 
         <div class="flex w-full justify-between items-center">
-            <button class="
-                w-32 h-10
-                font-bold text-base text-gray-900
-                border-2 bg-orange-500 rounded-sm
-                border-orange-500
-                shadow-md hover:border-orange-800
-                "
-                (click)="register()"
-                > Register </button>
+                <app-button
+                    (click)="register()"
+                    value="Register"
+                    ></app-button >
                 <p class="text-red-600">{{regFormError}}</p>
         </div>
     </div>
