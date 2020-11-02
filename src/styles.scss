@@ -15,6 +15,7 @@
     box-sizing: border-box;
 }
 
+
 button{}
 button:focus{
     outline: 0;
@@ -26,6 +27,7 @@ img{
 
 body{
     background: whitesmoke;
+    overflow-y: scroll;
 }
 
 input{
@@ -37,6 +39,9 @@ input{
 
 input:focus{
     background: rgba(0,0,0, .4);
+}
+input::placeholder{
+    color: rgba(0,0,0, .4);
 }
 
 label:first-child{
@@ -82,10 +87,15 @@ label{
 
 .dialog-responsive {
     width: 95%;
+    overflow: auto;
 }
 
 @media only screen and (min-width: 768px) {
     .dialog-responsive {
         width: 50%;
     }
+}
+
+.mat-datepicker-toggle-default-icon{
+    margin: 0 auto !important;
 }
