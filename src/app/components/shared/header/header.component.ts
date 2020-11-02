@@ -12,7 +12,8 @@ import { HttpClient } from '@angular/common/http';
 export class HeaderComponent implements OnInit {
     routes:{
         path: String,
-        icon: String
+        icon: String,
+        user: Boolean
     }[];
   constructor(
       public backendService: BackendService,
@@ -20,32 +21,48 @@ export class HeaderComponent implements OnInit {
       private router: Router,
       private http: HttpClient
   ) {
+
+      // Navigation routes
       this.routes = [{
           path: "/",
-          icon: "fa-home"
+          icon: "fa-home",
+          user: false
       }, {
           path: "/subscriptions",
-          icon: "fa-calendar-alt"
+          icon: "fa-calendar-alt",
+          user: true
       }, {
           path: "/cars",
-          icon: "fa-car"
+          icon: "fa-car",
+          user: true
       }]
   }
 
   ngOnInit(): void {
   }
 
+
+  /*
+    Removing navigation routes that is not available to user.
+  */
   access(routes){
       return routes.filter(route => {
-          return true;
+          if(!route.user) return true;
+          if(route.user && this.backendService.authToken) return true;
       })
   }
 
+  /*
+    1. Ending session in express backend.
+    2. Deleting userdata
+    3. Overwriting cookie to make sure its removed from browser.
+  */
   logout(){
       this.http.get(`/api/user/logout`)
         .subscribe(() => {
-            this.cookieService.delete('fleksAuth');
             this.backendService.authToken = undefined;
+            this.backendService.user = undefined;
+            this.cookieService.delete('fleksAuth');
             this.cookieService.set(
                 "fleksAuth",
                 null,

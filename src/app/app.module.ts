@@ -17,7 +17,7 @@ import {
 import {
     LoginComponent,
     CarTypesComponent,
-    AddCarComponent,
+    CarDialog,
     HomeComponent,
     CarDetailsComponent
 } from '@sites';
@@ -36,7 +36,7 @@ import { SubscriptionsDetailsComponent } from './components/sites/subscriptions-
         LoginComponent,
         CarTypesComponent,
         ButtonComponent,
-        AddCarComponent,
+        CarDialog,
         HomeComponent,
         CarDetailsComponent,
         SubscriptionsComponent,
@@ -54,7 +54,7 @@ import { SubscriptionsDetailsComponent } from './components/sites/subscriptions-
         NgxMatDatetimePickerModule,
         NgxMatTimepickerModule,
     ],
-    entryComponents: [AddCarComponent],
+    entryComponents: [CarDialog],
     providers: [
         CookieService,
         BackendService,

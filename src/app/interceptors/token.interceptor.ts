@@ -7,8 +7,6 @@ import {
     HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-/* Project imports */
 import { BackendService } from '@services';
 import { environment } from '@environment';
 

@@ -10,7 +10,7 @@ import { BackendService } from '@services';
     styleUrls: ['./car-types.component.scss']
 })
 export class CarTypesComponent implements OnInit {
-    cars:any[];
+    cars:any[]; //current cars details
 
     constructor(
         private dialog: MatDialog,
@@ -18,19 +18,30 @@ export class CarTypesComponent implements OnInit {
         private backendService:BackendService
     ) { }
 
+    /*
+    Initializing each time component is loaded.
+    */
     ngOnInit(): void {
         this.http.get(`/api/car-type`)
-            .subscribe((docs:any[]) => {
-                this.cars = docs;
-            })
+        .subscribe((docs:any[]) => {
+            this.cars = docs;
+        })
     }
 
+    /*
+    1. Initialize form for existing document
+    2. Opening dialog with said form.
+    */
     edit(car){
         car.form = this.createForm(car);
         car.formGroup = this.createFormGroup(car.form);
         this.openCar(car);
     }
 
+    /*
+    1. Initialize form without existing document.
+    2. Opening dialog with said document
+    */
     newCar(){
         var form = this.createForm();
         var formGroup = this.createFormGroup(form);
@@ -40,8 +51,11 @@ export class CarTypesComponent implements OnInit {
         })
     }
 
+    /*
+    Opening dialog with form/document
+    */
     openCar(car = undefined){
-        const dialogRef = this.dialog.open(AddCarComponent, {
+        const dialogRef = this.dialog.open(CarDialog, {
             panelClass: "dialog-responsive",
             data: car
         });
@@ -53,15 +67,22 @@ export class CarTypesComponent implements OnInit {
         });
     }
 
+    /*
+    - Uses Form created by createForm();
+    Creating FormGroup used in the Angular form control.
+    */
     createFormGroup(form){
         var formOptions:any = {};
         form.forEach((item) => {
             formOptions[item.key] = item.control;
         })
-
         return new FormGroup(formOptions);
     }
 
+    /*
+    Creating form in array format so that it can be rendered
+    using *ngFor.
+    */
     createForm(object:any = {}){
         let form = [{
             label: "Name*",
@@ -99,26 +120,32 @@ export class CarTypesComponent implements OnInit {
 }
 
 
-// Add car dialog
+/*
+Dialog for creating/updating car.
+*/
 @Component({
     templateUrl: 'add-car.component.html',
 })
-export class AddCarComponent {
-    error:string;
-    formGroup:FormGroup;
+export class CarDialog {
+    error:string; //http error
 
     constructor(
-        private dialogRef: MatDialogRef<AddCarComponent>,
+        private dialogRef: MatDialogRef<CarDialog>,
         private http: HttpClient,
         private backendService: BackendService,
         @Inject(MAT_DIALOG_DATA) public data: any
     ) {}
 
+    /* Close dialog */
     close() {
         this.dialogRef.close();
     }
 
-    add(){
+    /*
+    This function uses either uses POST/PUT to update car if _id field is
+    defined in the dialog data.
+    */
+    confirm(){
         this.error = undefined;
         if(this.data.formGroup.status == "INVALID") return this.error = "Please fill out the form";
 
@@ -131,11 +158,11 @@ export class AddCarComponent {
         let url = this.data._id?`/api/car-type/id/${this.data._id}`:`/api/car-type`;
 
         this.http.request(method, url, {body: body})
-            .subscribe((carType) => {
-                this.dialogRef.close(carType);
-            }, (e) => {
-                this.error = this.backendService.formatHttpError(e);
-            })
+        .subscribe((carType) => {
+            this.dialogRef.close(carType);
+        }, (e) => {
+            this.error = this.backendService.formatHttpError(e);
+        })
 
     }
 }

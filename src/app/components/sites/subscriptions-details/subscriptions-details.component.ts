@@ -3,36 +3,40 @@ import { ActivatedRoute } from '@angular/router';
 import  { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-subscriptions-details',
-  templateUrl: './subscriptions-details.component.html',
-  styleUrls: ['./subscriptions-details.component.scss']
+    selector: 'app-subscriptions-details',
+    templateUrl: './subscriptions-details.component.html',
+    styleUrls: ['./subscriptions-details.component.scss']
 })
 export class SubscriptionsDetailsComponent implements OnInit {
-subscription:any;
-sub:any;
-  constructor(
-      private route: ActivatedRoute,
-      private http: HttpClient
-  ) {
-      this.sub = route.params.subscribe(p => this.initSubscription(p['id']))
-  }
+    subscription:any; //Current subscription data
+    sub:any; //Refrence to router observable
 
-  ngOnDestroy(){
-      this.sub.unsubscribe();
-  }
+    constructor(
+        private route: ActivatedRoute,
+        private http: HttpClient
+    ) {
+        // Initializing subscription data each time route is navigated too.
+        this.sub = route.params.subscribe(p => this.initSubscription(p['id']))
+    }
 
-  ngOnInit(): void {
-  }
+    ngOnDestroy(){
+        this.sub.unsubscribe();
+    }
 
-  initSubscription(id){
-      this.http.get(`/api/subscription/id/${id}`)
+    ngOnInit(): void {
+    }
+
+    /* Initialize subscription based on id*/
+    initSubscription(id){
+        this.http.get(`/api/subscription/id/${id}`)
         .subscribe((doc) => {
             this.subscription = doc;
         })
-  }
+    }
 
-  formatDate(date){
-      return new Date(date).toLocaleString();
-  }
+    /* Format date */
+    formatDate(date){
+        return new Date(date).toLocaleString();
+    }
 
 }

@@ -10,7 +10,7 @@
 
     <div class="flex mt-5 items-center">
         <app-button value="Cancel" class="mr-5" (click)="close()"></app-button>
-        <app-button [value]="data._id?'Update':'Add car type'" (click)="add()"></app-button>
+        <app-button [value]="data._id?'Update':'Add car type'" (click)="confirm()"></app-button>
         <p class="text-red-600 font-bold ml-2">{{error}}</p>
     </div>
 </div>

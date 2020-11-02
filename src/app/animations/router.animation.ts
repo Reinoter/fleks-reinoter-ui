@@ -1,7 +1,10 @@
 import { trigger, state, animate, transition, style, query, animateChild, group } from '@angular/animations';
 
-export const slideInAnimation =
+// Fade animation used for router outlet
+export const fadeAnimation =
   trigger('routeAnimations', [
+
+    // Transition for each route
     transition('* <=> *', [
       style({ position: 'relative' }),
       query(':enter, :leave', [
@@ -26,4 +29,5 @@ export const slideInAnimation =
       ]),
       query(':enter', animateChild(), { optional: true}),
     ])
+
   ]);
