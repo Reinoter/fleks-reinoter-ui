@@ -56,7 +56,7 @@ export class CarDetailsComponent implements OnInit {
           car: this.car._id
       })
       .subscribe((subscription:any) => {
-          this.router.navigate(['/subscription', subscription._id])
+          this.router.navigate(['/subscriptions', subscription._id])
       }, (e) => {
           this.error = this.backendService.formatHttpError(e);
       })

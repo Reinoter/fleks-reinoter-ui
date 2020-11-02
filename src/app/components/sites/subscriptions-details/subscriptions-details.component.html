@@ -1,0 +1,22 @@
+<div class="flex items-center">
+    <div class="flex flex-col w-2/6">
+        <h1 class="text-bold text-2xl font-bold">Congratulations with your new car!</h1>
+
+        <label>Model</label>
+        <p>{{subscription?.car?.name}}</p>
+        <label>Order date</label>
+        <p>{{formatDate(subscription?.created_at)}}</p>
+        <label>Delivery date</label>
+        <p>{{formatDate(subscription?.deliveryDate)}}</p>
+        <label>Address</label>
+        <p>{{subscription?.address}}</p>
+        <!-- <label>Status</label>
+        <p>{{subscription?.status}}</p> -->
+    </div>
+    <div class="flex bg-contain bg-no-repeat w-4/6 h-64 bg-center" [style.backgroundImage]="'url('+subscription?.car?.image+')'"></div>
+</div>
+<app-button
+class="flex mt-10"
+value="Car details" icon="fa-long-arrow-alt-right"
+[routerLink]="['/cars', subscription?.car?._id]"
+></app-button>
