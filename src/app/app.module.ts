@@ -16,7 +16,8 @@ import {
 import {
     LoginComponent,
     CarTypesComponent,
-    AddCarComponent
+    AddCarComponent,
+    HomeComponent
 } from '@sites';
 
 import { BackendService } from '@services';
@@ -30,7 +31,8 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
         LoginComponent,
         CarTypesComponent,
         ButtonComponent,
-        AddCarComponent
+        AddCarComponent,
+        HomeComponent
     ],
     imports: [
         BrowserModule,
